@@ -3,12 +3,15 @@ import Steppers from './Steppers';
 import logo from './logo.svg';
 import './App.css';
 
+
+const myApiKey = '1d5832d904386ff315e3252a254a432a'
 class App extends Component {
   state = {
     items: []
   }
+  
   loadData = async ()=> {
-    let apiResponse = await fetch(`https://api.themoviedb.org/3/list/1?api_key=1d5832d904386ff315e3252a254a432a&language=en-US`);
+    let apiResponse = await fetch(`https://api.themoviedb.org/3/list/1?api_key=${myApiKey}&language=en-US`);
     let ourData = await apiResponse.json();  
     return ourData;
   }
@@ -21,7 +24,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to React & Material-ui</h1>
         </header>
         {this.state.items.length >0 &&
         <Steppers items={this.state.items} />

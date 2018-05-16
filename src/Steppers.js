@@ -11,6 +11,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 const styles = theme => ({
   root: {
+    margin: 'auto',
     maxWidth: 400,
     flexGrow: 1,
   },
@@ -23,7 +24,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 600,
+    height: 'auto',
     maxWidth: 400,
     overflow: 'hidden',
     width: '100%',
@@ -54,6 +55,7 @@ class Steppers extends React.Component {
   render() {
     const fulllist = this.props.items.map( item => 
         ({
+            id: item.id,
             label: item.title,
             imgPath: `https://image.tmdb.org/t/p/w500${item.poster_path}`
         })
@@ -74,7 +76,7 @@ class Steppers extends React.Component {
           enableMouseEvents
         >
           {fulllist.map(step => (
-            <img key={step.index} className={classes.img} src={step.imgPath} alt={step.label} />
+            <img key={step.id} className={classes.img} src={step.imgPath} alt={step.label} />
           ))}
         </SwipeableViews>
         <MobileStepper
